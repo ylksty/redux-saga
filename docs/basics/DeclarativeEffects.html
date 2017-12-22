@@ -51,6 +51,7 @@
         
     
     
+    
     <meta name="HandheldFriendly" content="true"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -63,6 +64,23 @@
     
     
     <link rel="prev" href="UsingSagaHelpers.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../../logo/favicon/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../../logo/favicon/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="apple-touch-icon" href='../../logo/favicon/apple-touch-icon-152x152.png'>
+    
+    
+        
+        <link rel="apple-touch-icon" sizes="120x120" href="../../logo/favicon/apple-touch-icon-120x120.png">
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="../../logo/favicon/apple-touch-icon-180x180.png">
+        
     
 
     </head>
@@ -518,7 +536,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="declarative-effects">Declarative Effects</h1><p>In <code>redux-saga</code>, Sagas are implemented using Generator functions. To express the Saga logic, we yield plain JavaScript Objects from the Generator. We call those Objects <em>Effects</em>. An Effect is simply an object that contains some information to be interpreted by the middleware. You can view Effects like instructions to the middleware to perform some operation (e.g., invoke some asynchronous function, dispatch an action to the store, etc.).</p><p>To create Effects, you use the functions provided by the library in the <code>redux-saga/effects</code> package.</p><p>In this section and the following, we will introduce some basic Effects. And see how the concept allows the Sagas to be easily tested.</p><p>Sagas can yield Effects in multiple forms. The simplest way is to yield a Promise.</p><p>For example suppose we have a Saga that watches a <code>PRODUCTS_REQUESTED</code> action. On each matching action, it starts a task to fetch a list of products from a server.</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> takeEvery <span class="token punctuation">}</span> from <span class="token string">&apos;redux-saga/effects&apos;</span>
+                                <h1 id="declarative-effects">Declarative Effects</h1><p>In <code>redux-saga</code>, Sagas are implemented using Generator functions. To express the Saga logic, we yield plain JavaScript Objects from the Generator. We call those Objects <a href="https://redux-saga.js.org/docs/api/#effect-creators" target="_blank"><em>Effects</em></a>. An Effect is simply an object that contains some information to be interpreted by the middleware. You can view Effects like instructions to the middleware to perform some operation (e.g., invoke some asynchronous function, dispatch an action to the store, etc.).</p><p>To create Effects, you use the functions provided by the library in the <code>redux-saga/effects</code> package.</p><p>In this section and the following, we will introduce some basic Effects. And see how the concept allows the Sagas to be easily tested.</p><p>Sagas can yield Effects in multiple forms. The simplest way is to yield a Promise.</p><p>For example suppose we have a Saga that watches a <code>PRODUCTS_REQUESTED</code> action. On each matching action, it starts a task to fetch a list of products from a server.</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> takeEvery <span class="token punctuation">}</span> from <span class="token string">&apos;redux-saga/effects&apos;</span>
 <span class="token keyword">import</span> Api from <span class="token string">&apos;./path/to/api&apos;</span>
 
 <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchFetchProducts</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -569,7 +587,7 @@ assert<span class="token punctuation">.</span><span class="token function">deepE
 
 <span class="token keyword">const</span> iterator <span class="token operator">=</span> <span class="token function">fetchSaga</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 assert<span class="token punctuation">.</span><span class="token function">deepEqual</span><span class="token punctuation">(</span>iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span> <span class="token function">cps</span><span class="token punctuation">(</span>readFile<span class="token punctuation">,</span> <span class="token string">&apos;/path/to/file&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">)</span></code></pre>
-<p><code>cps</code> also supports the same method invocation form as <code>call</code>.</p>
+<p><code>cps</code> also supports the same method invocation form as <code>call</code>.</p><p>A full list of declarative effects can be found in the <a href="https://redux-saga.js.org/docs/api/#effect-creators" target="_blank">API reference</a>.</p>
                                 
                                 </section>
                             
@@ -612,7 +630,7 @@ assert<span class="token punctuation">.</span><span class="token function">deepE
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.2 Declarative Effects","level":"1.3.2","depth":2,"next":{"title":"2.3 Dispatching actions","level":"1.3.3","depth":2,"path":"docs/basics/DispatchingActions.md","ref":"docs/basics/DispatchingActions.md","articles":[]},"previous":{"title":"2.1 Using Saga Helpers","level":"1.3.1","depth":2,"path":"docs/basics/UsingSagaHelpers.md","ref":"docs/basics/UsingSagaHelpers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["prism@1.0.0","-highlight","github"],"styles":{"website":"build/gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/redux-saga/redux-saga/"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"build/gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Redux-Saga","gitbook":"3.2.0"},"file":{"path":"docs/basics/DeclarativeEffects.md","mtime":"2017-11-05T00:48:48.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-11-05T21:06:12.638Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.2 Declarative Effects","level":"1.3.2","depth":2,"next":{"title":"2.3 Dispatching actions","level":"1.3.3","depth":2,"path":"docs/basics/DispatchingActions.md","ref":"docs/basics/DispatchingActions.md","articles":[]},"previous":{"title":"2.1 Using Saga Helpers","level":"1.3.1","depth":2,"path":"docs/basics/UsingSagaHelpers.md","ref":"docs/basics/UsingSagaHelpers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["prism@1.0.0","-highlight","github","favicon"],"styles":{"website":"build/gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/redux-saga/redux-saga/"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"build/gitbook.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"favicon":{"shortcut":"logo/favicon/favicon.ico","bookmark":"logo/favicon/favicon.ico","appleTouch":"logo/favicon/apple-touch-icon-152x152.png","appleTouchMore":{"120x120":"logo/favicon/apple-touch-icon-120x120.png","180x180":"logo/favicon/apple-touch-icon-180x180.png"}},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Redux-Saga","gitbook":"3.2.0"},"file":{"path":"docs/basics/DeclarativeEffects.md","mtime":"2017-12-22T00:39:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-12-22T00:44:09.353Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
